@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "TODO",
+  "authors": ["${mod_author}"],
+  "contact": {
+    "sources": "https://github.com/${repository}",
+    "issues": "https://github.com/${repository}/issues"
+  },
+  "license": "https://github.com/${repository}/blob/1.20.x/LICENSE.txt",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["galena.blissful.fabric.FabricEntrypoint"],
+    "fabric-datagen": ["galena.blissful.fabric.datagen.FabricDataGenerators"]
+  },
+  "mixins": ["${mod_id}.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.14",
+    "fabric": "*",
+    "minecraft": ">=1.19.2",
+    "java": ">=17"
+  }
+}

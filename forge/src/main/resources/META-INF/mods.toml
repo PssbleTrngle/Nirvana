@@ -1,0 +1,26 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = 'https://github.com/${repository}/blob/1.20.x/LICENSE.txt'
+issueTrackerURL = "https://github.com/${repository}/issues"
+showAsResourcePack = false
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+authors = "${mod_author}"
+description = '''TODO'''
+
+[[dependencies.${mod_id}]]
+    modId = "forge"
+    mandatory = true
+    versionRange = "[47,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.${mod_id}]]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.20.1,)"
+    ordering = "NONE"
+    side = "BOTH"

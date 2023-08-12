@@ -1,0 +1,40 @@
+name: Build & Release
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+
+      - name: Update mod version
+        uses: christian-draeger/write-properties@1.0.1
+        with:
+          path: "gradle.properties"
+          property: "mod_version"
+          value: ${{ github.event.release.tag_name }}
+
+      - name: Build and upload
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build curseforge modrinth
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
+          CHANGELOG: ${{ github.event.release.body }}
+          CI: true
