@@ -1,7 +1,12 @@
 {
   "block.blissful.hemp": "Hemp",
+  "block.blissful.hemp_crate": "Hemp Crate",
+  "block.blissful.weed_crate": "Weed Crate",
+  "effect.blissful.peace": "Peace",
+  "effect.blissful.peace.description": "A blissful aura befogs your brain",
   "item.blissful.hemp": "Hemp",
   "item.blissful.hemp_seeds": "Hemp Seeds",
   "item.blissful.joint": "Joint",
-  "item.blissful.weed": "Weed"
+  "item.blissful.weed": "Weed",
+  "item.blissful.weed_brownies": "Weed Brownies"
 }

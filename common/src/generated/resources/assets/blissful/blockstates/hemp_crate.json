@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "blissful:block/hemp_crate",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "blissful:block/hemp_crate",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "blissful:block/hemp_crate"
+    },
+    "facing=west": {
+      "model": "blissful:block/hemp_crate",
+      "y": 90
+    }
+  }
+}

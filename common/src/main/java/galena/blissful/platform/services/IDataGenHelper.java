@@ -9,4 +9,6 @@ public interface IDataGenHelper {
 
     void hempCrop(DataGenContext<Block, ? extends CropBlock> context, RegistrateBlockstateProvider provider);
 
+    void crate(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider);
+
 }

@@ -1,7 +1,12 @@
 {
   "block.blissful.hemp": "dɯǝH",
+  "block.blissful.hemp_crate": "ǝʇɐɹƆ dɯǝH",
+  "block.blissful.weed_crate": "ǝʇɐɹƆ pǝǝM",
+  "effect.blissful.peace": "ǝɔɐǝԀ",
+  "effect.blissful.peace.description": "uıɐɹq ɹnoʎ sboɟǝq ɐɹnɐ ןnɟssıןq Ɐ",
   "item.blissful.hemp": "dɯǝH",
   "item.blissful.hemp_seeds": "spǝǝS dɯǝH",
   "item.blissful.joint": "ʇuıoſ",
-  "item.blissful.weed": "pǝǝM"
+  "item.blissful.weed": "pǝǝM",
+  "item.blissful.weed_brownies": "sǝıuʍoɹᗺ pǝǝM"
 }

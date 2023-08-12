@@ -7,9 +7,9 @@ import galena.blissful.index.BlissfuItems;
 public class BlissfulCommon {
 
     public static void init() {
+        BlissfulEffects.register();
         BlissfulBlocks.register();
         BlissfuItems.register();
-        BlissfulEffects.register();
     }
 
 }

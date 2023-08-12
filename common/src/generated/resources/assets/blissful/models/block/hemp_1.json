@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/crop",
+  "parent": "blissful:block/crop_cross",
   "textures": {
-    "crop": "blissful:block/hemp_1"
+    "cross": "blissful:block/hemp_1"
   }
 }

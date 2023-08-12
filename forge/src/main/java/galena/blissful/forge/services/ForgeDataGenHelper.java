@@ -8,9 +8,17 @@ import net.minecraft.world.level.block.CropBlock;
 
 public class ForgeDataGenHelper implements IDataGenHelper {
 
-    @Override
-    public void hempCrop(DataGenContext<Block, ? extends CropBlock> context, RegistrateBlockstateProvider provider) {
+    private void NOOP() {
         throw new IllegalStateException("DataGen should only happen in fabric");
     }
 
+    @Override
+    public void hempCrop(DataGenContext<Block, ? extends CropBlock> context, RegistrateBlockstateProvider provider) {
+        NOOP();
+    }
+
+    @Override
+    public void crate(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
+        NOOP();
+    }
 }

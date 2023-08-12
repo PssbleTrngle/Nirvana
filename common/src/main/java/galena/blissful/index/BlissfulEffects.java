@@ -10,7 +10,7 @@ public class BlissfulEffects {
 
     private static final AbstractRegistrate<?> REGISTRATE = Services.PLATFORM.getRegistrate();
 
-    public static final RegistryEntry<PeaceMobEffect> HEMP = REGISTRATE
+    public static final RegistryEntry<PeaceMobEffect> PEACE = REGISTRATE
             .generic("peace", Registries.MOB_EFFECT, PeaceMobEffect::new)
             .register();
 
