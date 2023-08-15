@@ -5,5 +5,8 @@
   "item.blissful.hemp": "Hanf",
   "item.blissful.hemp_seeds": "Hanfsamen",
   "item.blissful.joint": "Bubatz",
-  "item.blissful.weed": "Canabis"
+  "item.blissful.weed": "Canabis",
+  "block.blissful.hemp_crate": "Hanfkiste",
+  "block.blissful.weed_crate": "Canabiskiste",
+  "item.blissful.weed_brownies": "Weedbrownies"
 }
