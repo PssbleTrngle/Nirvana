@@ -9,14 +9,10 @@ public class FabricEntrypoint implements ModInitializer {
 
     public static final Registrate REGISTRATE = Registrate.create(BlissfulConstants.MOD_ID);
 
-    public static void init() {
-        REGISTRATE.register();
-        BlissfulCommon.init();
-    }
-
     @Override
     public void onInitialize() {
-        init();
+        BlissfulCommon.init();
+        REGISTRATE.register();
     }
 
 }
