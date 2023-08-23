@@ -2,8 +2,6 @@ plugins {
     id("net.somethingcatchy.gradle") version ("0.0.7")
 }
 
-withKotlin()
-
 subprojects {
     repositories {
         modrinthMaven()
