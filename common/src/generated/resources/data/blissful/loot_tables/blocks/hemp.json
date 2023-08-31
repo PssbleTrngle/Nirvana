@@ -23,43 +23,101 @@
                   }
                 }
               ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:binomial_with_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "extra": 2,
+                    "probability": 0.57
+                  }
+                }
+              ],
+              "name": "blissful:hemp"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "blissful:hemp",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "6"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:binomial_with_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "extra": 1,
+                    "probability": 0.62
+                  }
+                }
+              ],
+              "name": "blissful:hemp"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "blissful:hemp_seeds"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "blissful:hemp",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "5"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:binomial_with_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "extra": 2,
+                    "probability": 0.57
+                  }
+                }
+              ],
               "name": "blissful:hemp_seeds"
             },
             {
               "type": "minecraft:item",
-              "name": "blissful:hemp"
+              "conditions": [
+                {
+                  "block": "blissful:hemp",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "6"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:binomial_with_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "extra": 1,
+                    "probability": 0.57
+                  }
+                }
+              ],
+              "name": "blissful:hemp_seeds"
             }
           ]
-        }
-      ],
-      "rolls": 1.0
-    },
-    {
-      "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "block": "blissful:hemp",
-          "condition": "minecraft:block_state_property",
-          "properties": {
-            "age": "5"
-          }
-        }
-      ],
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "functions": [
-            {
-              "enchantment": "minecraft:fortune",
-              "formula": "minecraft:binomial_with_bonus_count",
-              "function": "minecraft:apply_bonus",
-              "parameters": {
-                "extra": 3,
-                "probability": 0.5714286
-              }
-            }
-          ],
-          "name": "blissful:hemp"
         }
       ],
       "rolls": 1.0

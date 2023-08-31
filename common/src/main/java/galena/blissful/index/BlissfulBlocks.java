@@ -10,8 +10,19 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
 import static galena.blissful.platform.Services.DATAGEN;
 
@@ -26,13 +37,7 @@ public class BlissfulBlocks {
             .blockstate(DATAGEN::hempCrop)
             .tag(BlockTags.CROPS)
             .tag(BlissfulTags.SUMMER_CROPS)
-            .loot((tables, block) -> {
-                var condition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
-                        .setProperties(StatePropertiesPredicate.Builder.properties()
-                                .hasProperty(HempCropBlock.AGE, block.getMaxAge())
-                        );
-                tables.add(block, tables.createCropDrops(block, BlissfuItems.HEMP_SEEDS.get(), BlissfuItems.HEMP.get(), condition));
-            })
+            .loot(DATAGEN::hempCrop)
             .register();
 
     public static final BlockEntry<CrateBlock> HEMP_CRATE = REGISTRATE

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "blissful:hemp_seeds"
+    }
+  ],
+  "result": {
+    "item": "blissful:weed_brownies"
+  }
+}
