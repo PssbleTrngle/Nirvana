@@ -4,6 +4,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
 import java.util.stream.Stream;
@@ -28,5 +29,10 @@ public abstract class SmokingItem extends Item {
         effect.forEach(entity::addEffect);
 
         return super.finishUsingItem(stack, level, entity);
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack itemStack) {
+        return UseAnim.TOOT_HORN;
     }
 }
