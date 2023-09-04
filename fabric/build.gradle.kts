@@ -12,6 +12,9 @@ fabric {
 }
 
 dependencies {
+    modCompileOnly("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    modCompileOnly("mezz.jei:jei-${mc_version}-fabric-api:${jei_version}")
+
     if(!env.isCI) {
         modRuntimeOnly("mezz.jei:jei-${mc_version}-fabric:${jei_version}")
         modRuntimeOnly("maven.modrinth:just-enough-effect-descriptions-jeed:${jeed_version}")

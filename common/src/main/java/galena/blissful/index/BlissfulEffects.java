@@ -14,6 +14,10 @@ public class BlissfulEffects {
             .generic("peace", Registries.MOB_EFFECT, PeaceMobEffect::new)
             .register();
 
+    //public static final RegistryEntry<Potion> PEACE_POTION = REGISTRATE
+    //        .generic("peace", Registries.POTION, () -> new Potion(new MobEffectInstance(PEACE.get())))
+    //        .register();
+
     public static void register() {
         // loads this class
     }

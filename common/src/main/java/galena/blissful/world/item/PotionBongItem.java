@@ -1,6 +1,5 @@
 package galena.blissful.world.item;
 
-import galena.blissful.index.BlissfulEffects;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,18 +12,22 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class BongItem extends SmokingItem {
+public class PotionBongItem extends SmokingItem {
 
-    public BongItem(Properties properties) {
+    public PotionBongItem(Properties properties) {
         super(properties);
     }
 
     @Override
     Stream<MobEffectInstance> getEffects(ItemStack stack, @Nullable Level level, @Nullable LivingEntity entity) {
-        return Stream.of(new MobEffectInstance(BlissfulEffects.PEACE.get(), 100, 0));
+        return PotionUtils.getMobEffects(stack).stream();
+    }
+
+    public String getDescriptionId(ItemStack stack) {
+        return PotionUtils.getPotion(stack).getName(getDescriptionId() + ".effect.");
     }
 
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        PotionUtils.addPotionTooltip(getEffects(stack, level, null).toList(), tooltip, 1.0F);
+        PotionUtils.addPotionTooltip(stack, tooltip, 1.0F);
     }
 }

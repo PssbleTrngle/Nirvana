@@ -4,6 +4,8 @@ import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import galena.blissful.BlissfulCommon;
 import galena.blissful.BlissfulConstants;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(BlissfulConstants.MOD_ID)
@@ -13,6 +15,9 @@ public class ForgeEntrypoint {
 
     public ForgeEntrypoint() {
         BlissfulCommon.init();
+
+        //noinspection Convert2MethodRef
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ForgeClientEntrypoint.init());
     }
 
 }

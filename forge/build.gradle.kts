@@ -11,7 +11,10 @@ forge {
 }
 
 dependencies {
-    if(!env.isCI) {
+    modCompileOnly("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    modCompileOnly("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+
+    if (!env.isCI) {
         modRuntimeOnly("mezz.jei:jei-${mc_version}-forge:${jei_version}")
         modRuntimeOnly("maven.modrinth:just-enough-effect-descriptions-jeed:${jeed_version}")
     }

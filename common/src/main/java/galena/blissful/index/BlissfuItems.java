@@ -9,6 +9,7 @@ import galena.blissful.platform.Services;
 import galena.blissful.world.item.BongItem;
 import galena.blissful.world.item.JointItem;
 import galena.blissful.world.item.LazyFoodItem;
+import galena.blissful.world.item.PotionBongItem;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,6 +17,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.Items;
 
 public class BlissfuItems {
 
@@ -36,6 +38,7 @@ public class BlissfuItems {
             .item("weed", Item::new)
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
             .recipe((c, p) -> {
+                p.smelting(DataIngredient.items(HEMP.get()), RecipeCategory.MISC, c, 0.25F);
                 p.smoking(DataIngredient.items(HEMP.get()), RecipeCategory.MISC, c, 0.25F);
                 p.campfire(DataIngredient.items(HEMP.get()), RecipeCategory.MISC, c, 0.25F);
             })
@@ -54,6 +57,8 @@ public class BlissfuItems {
             .recipe((c, p) -> ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.FOOD, c.get())
                     .requires(HEMP_SEEDS)
+                    .requires(Items.WHEAT)
+                    .requires(Items.COCOA_BEANS)
                     .unlockedBy("has_hemp_seed", RegistrateRecipeProvider.has(HEMP_SEEDS))
                     .save(p)
             )
@@ -62,6 +67,14 @@ public class BlissfuItems {
     public static final ItemEntry<BongItem> BONG = REGISTRATE
             .item("bong", BongItem::new)
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
+            .properties(it -> it.stacksTo(1))
+            .register();
+
+    public static final ItemEntry<PotionBongItem> POTION_BONG = REGISTRATE
+            .item("potion_bong", PotionBongItem::new)
+            .tab(CreativeModeTabs.FOOD_AND_DRINKS)
+            .properties(it -> it.stacksTo(1))
+            .model((c, p) -> p.generated(c, p.modLoc("item/bong_potion"), p.modLoc("item/bong_potion_overlay")))
             .register();
 
     private static final NonNullSupplier<FoodProperties> JOINT_FOOD = NonNullSupplier.lazy(() -> new FoodProperties.Builder()

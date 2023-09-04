@@ -1,11 +1,17 @@
 {
   "type": "jeed:effect_provider",
-  "effect":{
+  "effect": {
     "id": "blissful:peace"
   },
   "providers": [
     {
       "item": "blissful:weed"
+    },
+    {
+      "item": "blissful:joint"
+    },
+    {
+      "item": "blissful:bong"
     }
   ]
 }

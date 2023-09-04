@@ -13,7 +13,8 @@
   "environment": "*",
   "entrypoints": {
     "main": ["galena.blissful.fabric.FabricEntrypoint"],
-    "fabric-datagen": ["galena.blissful.fabric.datagen.FabricDataGenerators"]
+    "fabric-datagen": ["galena.blissful.fabric.datagen.FabricDataGenerators"],
+    "jei_mod_plugin": ["galena.blissful.compat.BlissfulJeiPlugin"]
   },
   "mixins": ["${mod_id}.mixins.json"],
   "depends": {

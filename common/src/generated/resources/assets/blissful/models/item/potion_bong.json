@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "blissful:item/bong_potion",
+    "layer1": "blissful:item/bong_potion_overlay"
+  }
+}
