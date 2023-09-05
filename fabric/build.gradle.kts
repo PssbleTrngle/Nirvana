@@ -1,3 +1,6 @@
+import net.fabricmc.loom.api.LoomGradleExtensionAPI
+
+val mod_id: String by extra
 val mc_version: String by extra
 val registrate_fabric_version: String by extra
 val jei_version: String by extra
@@ -9,6 +12,10 @@ fabric {
 
     dependOn(project(":common"))
     includesMod("com.tterrag.registrate_fabric:Registrate:${registrate_fabric_version}")
+}
+
+configure<LoomGradleExtensionAPI> {
+    accessWidenerPath.set(file("src/main/resources/$mod_id.accesswidener"))
 }
 
 dependencies {

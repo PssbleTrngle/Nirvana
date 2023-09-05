@@ -1,12 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "galena.blissful.mixins",
+  "package": "galena.blissful.fabric.mixins",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "${mod_id}.refmap.json",
+  "refmap": "blissful.refmap.json",
   "mixins": [
-    "LivingEntityMixin",
-    "MobMixin"
+    "PotionBrewingMixin",
+    "PotionSlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1

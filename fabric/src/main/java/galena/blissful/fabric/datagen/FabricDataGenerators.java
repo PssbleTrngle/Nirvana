@@ -32,8 +32,7 @@ public class FabricDataGenerators implements DataGeneratorEntrypoint {
 
         BuiltInRegistries.POTION.forEach(potion -> {
             var id = potion.getName("");
-            var stack = BlissfuItems.POTION_BONG.asStack();
-            PotionUtils.setPotion(stack, potion);
+            var stack = PotionUtils.setPotion(BlissfuItems.POTION_BONG.asStack(), potion);
             if (potion.getEffects().isEmpty()) {
                 REGISTRATE.addRawLang(stack.getDescriptionId(), RegistrateLangProvider.toEnglishName(id) + " Bong");
             } else {

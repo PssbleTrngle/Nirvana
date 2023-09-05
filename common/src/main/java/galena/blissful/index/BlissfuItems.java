@@ -1,23 +1,36 @@
 package galena.blissful.index;
 
 import com.tterrag.registrate.AbstractRegistrate;
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.CreativeModeTabModifier;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import galena.blissful.BlissfulClient;
+import galena.blissful.BlissfulConstants;
 import galena.blissful.platform.Services;
 import galena.blissful.world.item.BongItem;
 import galena.blissful.world.item.JointItem;
 import galena.blissful.world.item.LazyFoodItem;
 import galena.blissful.world.item.PotionBongItem;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
+
+import java.util.function.Consumer;
 
 public class BlissfuItems {
 
@@ -55,7 +68,7 @@ public class BlissfuItems {
             .item("weed_brownies", p -> new LazyFoodItem(p, BROWNIES_FOOD))
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
             .recipe((c, p) -> ShapelessRecipeBuilder
-                    .shapeless(RecipeCategory.FOOD, c.get())
+                    .shapeless(RecipeCategory.FOOD, c.get(), 2)
                     .requires(HEMP_SEEDS)
                     .requires(Items.WHEAT)
                     .requires(Items.COCOA_BEANS)
@@ -67,24 +80,30 @@ public class BlissfuItems {
     public static final ItemEntry<BongItem> BONG = REGISTRATE
             .item("bong", BongItem::new)
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
-            .properties(it -> it.stacksTo(1))
+            .properties(it -> it.durability(Services.CONFIG.common().getBongHits()))
             .register();
+
+    private static <T extends Item> Consumer<CreativeModeTabModifier> addPotionStacks(ItemBuilder<T, ?> item) {
+        return modifier -> BuiltInRegistries.POTION.stream()
+                .filter(it -> it != Potions.EMPTY && it != Potions.WATER)
+                .map(it -> PotionUtils.setPotion(new ItemStack(item.getEntry()), it))
+                .forEach(modifier::accept);
+    }
 
     public static final ItemEntry<PotionBongItem> POTION_BONG = REGISTRATE
             .item("potion_bong", PotionBongItem::new)
-            .tab(CreativeModeTabs.FOOD_AND_DRINKS)
-            .properties(it -> it.stacksTo(1))
+            .transform(it -> it.tab(CreativeModeTabs.FOOD_AND_DRINKS, BlissfuItems.addPotionStacks(it)))
+            .color(() -> () -> BlissfulClient.POTION_COLOR)
+            .properties(it -> it.durability(Services.CONFIG.common().getBongHits()))
             .model((c, p) -> p.generated(c, p.modLoc("item/bong_potion"), p.modLoc("item/bong_potion_overlay")))
             .register();
 
-    private static final NonNullSupplier<FoodProperties> JOINT_FOOD = NonNullSupplier.lazy(() -> new FoodProperties.Builder()
-            .effect(new MobEffectInstance(BlissfulEffects.PEACE.get(), 100, 0), 1.0F)
-            .alwaysEat()
-            .build()
-    );
+    public static final TagKey<Item> NAUSEATING = TagKey.create(Registries.ITEM, new ResourceLocation(BlissfulConstants.MOD_ID, "nauseating"));
 
     public static final ItemEntry<JointItem> JOINT = REGISTRATE
             .item("joint", JointItem::new)
+            .properties(it -> it.durability(Services.CONFIG.common().getJointHits()))
+            .tag(NAUSEATING)
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
             .register();
 

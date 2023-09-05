@@ -19,6 +19,8 @@ subprojects {
             url = uri("https://maven.tterrag.com/")
             content {
                 includeGroup("com.tterrag.registrate")
+                includeGroup("com.jozufozu.flywheel")
+                includeGroup("com.simibubi.create")
             }
         }
 

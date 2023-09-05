@@ -15,9 +15,7 @@ import static galena.blissful.platform.Services.BREWING;
 public class BlissfulBrewing {
 
     private static ItemStack withPotion(ItemLike item, Potion potion) {
-        var stack = new ItemStack(item);
-        PotionUtils.setPotion(stack, potion);
-        return stack;
+        return PotionUtils.setPotion(new ItemStack(item), potion);
     }
 
     private static void registerMix(ItemStack ingredient, ItemStack from) {

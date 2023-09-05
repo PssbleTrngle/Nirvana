@@ -16,7 +16,7 @@
     "fabric-datagen": ["galena.blissful.fabric.datagen.FabricDataGenerators"],
     "jei_mod_plugin": ["galena.blissful.compat.BlissfulJeiPlugin"]
   },
-  "mixins": ["${mod_id}.mixins.json"],
+  "mixins": ["${mod_id}.mixins.json", "${mod_id}.fabric.mixins.json"],
   "depends": {
     "fabricloader": ">=0.14",
     "fabric": "*",

@@ -1,12 +1,11 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "galena.blissful.mixins",
+  "package": "galena.blissful.forge.mixins",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "${mod_id}.refmap.json",
+  "refmap": "blissful.refmap.json",
   "mixins": [
-    "LivingEntityMixin",
-    "MobMixin"
+    "GenericItemFillingMixin"
   ],
   "injectors": {
     "defaultRequire": 1

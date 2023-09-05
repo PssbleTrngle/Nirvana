@@ -1,5 +1,6 @@
 package galena.blissful.world.item;
 
+import galena.blissful.platform.Services;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,13 +15,26 @@ import java.util.stream.Stream;
 
 public class PotionBongItem extends SmokingItem {
 
+    private static MobEffectInstance modify(MobEffectInstance instance) {
+        return new MobEffectInstance(
+                instance.getEffect(),
+                instance.getDuration() / Services.CONFIG.common().getBongHits(),
+                instance.getAmplifier(),
+                instance.isAmbient(),
+                instance.isVisible(),
+                instance.showIcon(),
+                null,
+                instance.getFactorData()
+        );
+    }
+
     public PotionBongItem(Properties properties) {
         super(properties);
     }
 
     @Override
     Stream<MobEffectInstance> getEffects(ItemStack stack, @Nullable Level level, @Nullable LivingEntity entity) {
-        return PotionUtils.getMobEffects(stack).stream();
+        return PotionUtils.getMobEffects(stack).stream().map(PotionBongItem::modify);
     }
 
     public String getDescriptionId(ItemStack stack) {

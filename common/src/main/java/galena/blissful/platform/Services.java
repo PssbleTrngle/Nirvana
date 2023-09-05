@@ -1,6 +1,7 @@
 package galena.blissful.platform;
 
 import galena.blissful.platform.services.IBrewingRegistry;
+import galena.blissful.platform.services.IConfigs;
 import galena.blissful.platform.services.IDataGenHelper;
 import galena.blissful.platform.services.IPlatformHelper;
 
@@ -11,6 +12,7 @@ public class Services {
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
     public static final IDataGenHelper DATAGEN = load(IDataGenHelper.class);
     public static final IBrewingRegistry BREWING = load(IBrewingRegistry.class);
+    public static final IConfigs CONFIG = load(IConfigs.class);
 
     private static <T> T load(Class<T> clazz) {
         return ServiceLoader.load(clazz)

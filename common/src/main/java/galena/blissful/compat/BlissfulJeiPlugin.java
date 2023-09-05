@@ -3,14 +3,12 @@ package galena.blissful.compat;
 import galena.blissful.BlissfulConstants;
 import galena.blissful.index.BlissfuItems;
 import mezz.jei.api.IModPlugin;
-import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.ingredients.subtypes.IIngredientSubtypeInterpreter;
 import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
 
-@JeiPlugin
 public class BlissfulJeiPlugin implements IModPlugin {
 
     private static final ResourceLocation ID = new ResourceLocation(BlissfulConstants.MOD_ID, "jei");
