@@ -1,11 +1,13 @@
 package galena.blissful.world.effects;
 
 import galena.blissful.index.BlissfuItems;
+import galena.blissful.platform.Services;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -17,19 +19,18 @@ public class PeaceEffect extends MobEffect implements IStackingEffect {
 
     @Override
     public void onIncreasedTo(MobEffectInstance instance, ItemStack source, LivingEntity target, Level level) {
-        if (source.is(BlissfuItems.NAUSEATING) && instance.getAmplifier() > 9) {
-            target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20 * 5, 0));
+        var hitsTaken = instance.getAmplifier() + 1;
+        if (source.is(BlissfuItems.NAUSEATING) && hitsTaken >= Services.CONFIG.common().nauseaAfterHits()) {
+            target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20 * 20, 0));
         }
     }
 
     @Override
     public void addAttributeModifiers(LivingEntity entity, AttributeMap attributes, int i) {
         super.addAttributeModifiers(entity, attributes, i);
-    }
-
-    @Override
-    public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributes, int i) {
-        super.removeAttributeModifiers(entity, attributes, i);
+        if(entity instanceof Mob mob) {
+            mob.setTarget(null);
+        }
     }
 
 }

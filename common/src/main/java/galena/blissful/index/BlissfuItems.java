@@ -105,6 +105,13 @@ public class BlissfuItems {
             .properties(it -> it.durability(Services.CONFIG.common().getJointHits()))
             .tag(NAUSEATING)
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
+            .recipe((c, p) -> ShapelessRecipeBuilder
+                    .shapeless(RecipeCategory.FOOD, c.get())
+                    .requires(Items.PAPER)
+                    .requires(WEED)
+                    .unlockedBy("has_weed", RegistrateRecipeProvider.has(WEED))
+                    .save(p)
+            )
             .register();
 
     public static void register() {

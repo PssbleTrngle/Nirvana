@@ -1,10 +1,12 @@
 package galena.blissful.world.item;
 
 import galena.blissful.index.BlissfulEffects;
+import galena.blissful.platform.Services;
 import galena.blissful.world.effects.IStackingEffect;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -27,21 +29,20 @@ import java.util.stream.Stream;
 
 public abstract class SmokingItem extends Item {
 
-    public static final double RANGE = 3.0;
-
     public SmokingItem(Properties properties) {
         super(properties);
     }
 
     abstract Stream<MobEffectInstance> getEffects(ItemStack stack, @Nullable Level level, @Nullable LivingEntity entity);
 
-    private void addParticles(Level level, LivingEntity entity) {
-        for (int i = 0; i < 5; i++) {
-            level.addParticle(ParticleTypes.SMOKE,
-                    entity.getX(), entity.getY(), entity.getZ(),
-                    entity.getRandom().nextDouble() * 0.1, 0.2 + entity.getRandom().nextDouble() * 0.1, entity.getRandom().nextDouble() * 0.1
-            );
-        }
+    private void addParticles(ServerLevel level, LivingEntity entity) {
+        var rot = entity.getLookAngle().scale(0.6);
+        level.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                entity.getX() + rot.x, entity.getEyeY() + rot.y, entity.getZ() + rot.z,
+                5,
+                0.0, 0.2 + entity.getRandom().nextDouble() * 0.1, 0.0,
+                0.02
+        );
     }
 
     private boolean isStackingEffect(MobEffect effect) {
@@ -56,7 +57,7 @@ public abstract class SmokingItem extends Item {
             var increased = new MobEffectInstance(
                     instance.getEffect(),
                     instance.getDuration(),
-                    instance.getAmplifier() + 1,
+                    existing.getAmplifier() + 1,
                     instance.isAmbient(),
                     instance.isVisible(),
                     instance.showIcon(),
@@ -76,11 +77,12 @@ public abstract class SmokingItem extends Item {
 
     private void applyEffects(ItemStack source, Level level, LivingEntity user) {
         var effects = getEffects(source, level, user);
-        var targets = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(user.position(), RANGE, RANGE, RANGE));
+        var range = Services.CONFIG.common().smokingRange() * 2;
+        var targets = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(user.position(), range, range, range));
 
-        targets.forEach(target ->
-                effects.forEach(it -> applyEffect(it, source, target, user))
-        );
+        effects.forEach(effect -> targets.forEach(target ->
+                applyEffect(effect, source, target, user)
+        ));
     }
 
     private static ItemStack takeHit(ItemStack stack) {
@@ -104,9 +106,9 @@ public abstract class SmokingItem extends Item {
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         entity.gameEvent(GameEvent.DRINK);
 
-        if (!level.isClientSide) {
+        if (level instanceof ServerLevel serverLevel) {
             applyEffects(stack, level, entity);
-            addParticles(level, entity);
+            addParticles(serverLevel, entity);
         }
 
         if (entity instanceof ServerPlayer player) {
