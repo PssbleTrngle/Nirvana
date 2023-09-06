@@ -15,7 +15,7 @@ dependencies {
     "mappings"(loom.officialMojangMappings())
 
     modCompileOnly("com.tterrag.registrate_fabric:Registrate:${registrate_fabric_version}")
-    modCompileOnly("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    //modCompileOnly("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
 }
 
 tasks.register("prepareWorkspace") {

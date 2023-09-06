@@ -14,7 +14,7 @@
   "entrypoints": {
     "main": ["galena.blissful.fabric.FabricEntrypoint"],
     "fabric-datagen": ["galena.blissful.fabric.datagen.FabricDataGenerators"],
-    "jei_mod_plugin": ["galena.blissful.compat.BlissfulJeiPlugin"]
+    "jei_mod_plugin": ["galena.blissful.fabric.compat.BlissfulJeiFabricPlugin"]
   },
   "mixins": ["${mod_id}.mixins.json", "${mod_id}.fabric.mixins.json"],
   "depends": {
