@@ -25,4 +25,8 @@ public class BlissfulCommonConfig {
     public int bongPeaceSeconds() {
         return 30;
     }
+
+    public int browniesPeaceSeconds() {
+        return 40;
+    }
 }

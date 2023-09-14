@@ -58,7 +58,7 @@ public class BlissfuItems {
             .register();
 
     private static final NonNullSupplier<FoodProperties> BROWNIES_FOOD = NonNullSupplier.lazy(() -> new FoodProperties.Builder()
-            .effect(new MobEffectInstance(BlissfulEffects.PEACE.get(), 100, 0), 1.0F)
+            .effect(new MobEffectInstance(BlissfulEffects.PEACE.get(), 20 * Services.CONFIG.common().browniesPeaceSeconds(), 0), 1.0F)
             .nutrition(2)
             .saturationMod(0.1F)
             .build()
@@ -81,6 +81,7 @@ public class BlissfuItems {
             .item("bong", BongItem::new)
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
             .properties(it -> it.durability(Services.CONFIG.common().getBongHits()))
+            .properties(it -> it.craftRemainder(Items.GLASS_BOTTLE))
             .register();
 
     private static <T extends Item> Consumer<CreativeModeTabModifier> addPotionStacks(ItemBuilder<T, ?> item) {
@@ -95,6 +96,7 @@ public class BlissfuItems {
             .transform(it -> it.tab(CreativeModeTabs.FOOD_AND_DRINKS, BlissfuItems.addPotionStacks(it)))
             .color(() -> () -> BlissfulClient.POTION_COLOR)
             .properties(it -> it.durability(Services.CONFIG.common().getBongHits()))
+            .properties(it -> it.craftRemainder(Items.GLASS_BOTTLE))
             .model((c, p) -> p.generated(c, p.modLoc("item/bong_potion"), p.modLoc("item/bong_potion_overlay")))
             .register();
 
