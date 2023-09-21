@@ -2,8 +2,10 @@ package galena.blissful.forge.compat;
 
 import galena.blissful.compat.BlissfulJeiCompat;
 import galena.blissful.index.BlissfuItems;
+import galena.blissful.index.BlissfulRecipeTypes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.ISubtypeRegistration;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +19,8 @@ public class BlissfulForgeJeiPlugin implements IModPlugin {
         if (ModList.get().isLoaded("create")) {
             CreateCompat.addJeiRecipes(registration);
         }
+
+        registration.addRecipes(RecipeTypes.CRAFTING, BlissfulRecipeTypes.createSalveRecipes());
     }
 
     @Override

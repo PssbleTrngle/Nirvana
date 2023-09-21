@@ -4,13 +4,8 @@
   "package": "galena.blissful.mixins",
   "compatibilityLevel": "JAVA_17",
   "refmap": "${mod_id}.refmap.json",
-  "mixins": [
-    "LivingEntityMixin",
-    "MobMixin"
-  ],
-  "client": [
-    "PlayerItemInHandLayerMixin"
-  ],
+  "mixins": ["EntityMixin", "LivingEntityMixin", "MobMixin"],
+  "client": ["ItemInHandRendererMixin", "PlayerItemInHandLayerMixin"],
   "injectors": {
     "defaultRequire": 1
   }

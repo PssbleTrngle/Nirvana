@@ -3,6 +3,9 @@
   "providers": [
     {
       "item": "blissful:potion_bong"
+    },
+    {
+      "item": "blissful:herbal_salve"
     }
   ]
 }

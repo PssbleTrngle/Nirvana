@@ -1,5 +1,6 @@
 package galena.blissful;
 
+import galena.blissful.index.BlissfulRecipeTypes;
 import galena.blissful.index.BlissfulBrewing;
 import galena.blissful.index.BlissfulEffects;
 import galena.blissful.index.BlissfulBlocks;
@@ -13,6 +14,7 @@ public class BlissfulCommon {
         BlissfulEffects.register();
         BlissfulBlocks.register();
         BlissfuItems.register();
+        BlissfulRecipeTypes.register();
 
         Services.PLATFORM.getRegistrate().addRegisterCallback(Registries.POTION, BlissfulBrewing::register);
     }

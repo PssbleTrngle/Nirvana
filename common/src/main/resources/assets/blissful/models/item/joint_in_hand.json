@@ -23,15 +23,15 @@
 	"display": {
 		"head": {
 			"rotation": [0, 0, 0],
-			"translation": [-4, -6, -15],
+			"translation": [0, -2, -10],
 			"scale": [1.5, 1.5, 1.5]
 		},
 		"thirdperson_righthand": {
-			"translation": [0, -2, 15],
+			"translation": [0, -2, -1],
 			"rotation": [-90, 0, 0]
 		},
 		"thirdperson_lefthand": {
-			"translation": [0, -2, 15],
+			"translation": [0, -2, -1],
 			"rotation": [-90, 0, 0]
 		}
 	}

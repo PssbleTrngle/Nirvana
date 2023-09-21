@@ -29,4 +29,8 @@ public class BlissfulCommonConfig {
     public int browniesPeaceSeconds() {
         return 40;
     }
+
+    public int herbalSalveDuration() {
+        return 20 * 8 * 3;
+    }
 }

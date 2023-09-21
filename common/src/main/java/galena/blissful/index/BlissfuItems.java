@@ -1,5 +1,6 @@
 package galena.blissful.index;
 
+import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
@@ -10,6 +11,7 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import galena.blissful.BlissfulClient;
 import galena.blissful.platform.Services;
 import galena.blissful.world.item.BongItem;
+import galena.blissful.world.item.HerbalSalveItem;
 import galena.blissful.world.item.JointItem;
 import galena.blissful.world.item.LazyFoodItem;
 import galena.blissful.world.item.PotionBongItem;
@@ -87,6 +89,12 @@ public class BlissfuItems {
                 .forEach(modifier::accept);
     }
 
+    private static <T extends Item> Consumer<CreativeModeTabModifier> addSalveStacks() {
+        return modifier -> BlissfulRecipeTypes.getSalves()
+                .map(Pair::getSecond)
+                .forEach(modifier::accept);
+    }
+
     public static final ItemEntry<PotionBongItem> POTION_BONG = REGISTRATE
             .item("potion_bong", PotionBongItem::new)
             .transform(it -> it.tab(CreativeModeTabs.FOOD_AND_DRINKS, BlissfuItems.addPotionStacks(it)))
@@ -109,6 +117,13 @@ public class BlissfuItems {
                     .unlockedBy("has_weed", RegistrateRecipeProvider.has(WEED))
                     .save(p)
             )
+            .register();
+
+    public static final ItemEntry<HerbalSalveItem> HERBAL_SALVE = REGISTRATE
+            .item("herbal_salve", HerbalSalveItem::new)
+            .properties(it -> it.stacksTo(1))
+            .properties(it -> it.craftRemainder(Items.BOWL))
+            .tab(CreativeModeTabs.FOOD_AND_DRINKS, BlissfuItems.addSalveStacks())
             .register();
 
     public static void register() {
