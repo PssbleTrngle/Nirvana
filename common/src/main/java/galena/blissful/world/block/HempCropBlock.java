@@ -1,7 +1,9 @@
 package galena.blissful.world.block;
 
+import galena.blissful.index.BlissfuItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,6 +28,11 @@ public class HempCropBlock extends CropBlock {
 
     public HempCropBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected ItemLike getBaseSeedId() {
+        return BlissfuItems.HEMP_SEEDS.get();
     }
 
     @Override
