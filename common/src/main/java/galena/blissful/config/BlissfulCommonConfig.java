@@ -2,7 +2,11 @@ package galena.blissful.config;
 
 public class BlissfulCommonConfig {
 
-    public double smokingRange() {
+    public double jointRadius() {
+        return 15.0;
+    }
+
+    public double bongRadius() {
         return 4.0;
     }
 

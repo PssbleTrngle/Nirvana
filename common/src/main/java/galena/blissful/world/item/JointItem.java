@@ -66,6 +66,11 @@ public class JointItem extends SmokingItem {
         return Stream.of(new MobEffectInstance(BlissfulEffects.PEACE.get(), 20 * Services.CONFIG.common().jointPeaceSeconds(), 0));
     }
 
+    @Override
+    double getRadius(ItemStack stack, @Nullable Level level, @Nullable LivingEntity entity) {
+        return Services.CONFIG.common().jointRadius();
+    }
+
     @FunctionalInterface
     public interface Renderer {
         void render(ItemRenderer renderer, BakedModel model, VertexConsumer vertexConsumer);

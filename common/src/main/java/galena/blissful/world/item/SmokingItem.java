@@ -1,7 +1,6 @@
 package galena.blissful.world.item;
 
 import galena.blissful.index.BlissfulEffects;
-import galena.blissful.platform.Services;
 import galena.blissful.world.effects.IStackingEffect;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.particles.ParticleTypes;
@@ -33,6 +32,8 @@ public abstract class SmokingItem extends Item {
     }
 
     abstract Stream<MobEffectInstance> getEffects(ItemStack stack, @Nullable Level level, @Nullable LivingEntity entity);
+
+    abstract double getRadius(ItemStack stack, @Nullable Level level, @Nullable LivingEntity entity);
 
     private void addParticles(ServerLevel level, LivingEntity entity) {
         var rot = entity.getLookAngle().scale(0.6);
@@ -76,7 +77,7 @@ public abstract class SmokingItem extends Item {
 
     private void applyEffects(ItemStack source, Level level, LivingEntity user) {
         var effects = getEffects(source, level, user);
-        var range = Services.CONFIG.common().smokingRange() * 2;
+        var range = getRadius(source, level, user) * 2;
         var targets = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(user.position(), range, range, range));
 
         effects.forEach(effect -> targets.forEach(target ->
@@ -85,6 +86,8 @@ public abstract class SmokingItem extends Item {
     }
 
     private static ItemStack takeHit(ItemStack stack) {
+        var remainder = stack.getItem().getCraftingRemainingItem();
+
         if (stack.isDamageableItem()) {
             stack.setDamageValue(stack.getDamageValue() + 1);
             if (stack.getDamageValue() == stack.getMaxDamage()) {
@@ -95,7 +98,6 @@ public abstract class SmokingItem extends Item {
         }
 
         if (stack.isEmpty()) {
-            var remainder = stack.getItem().getCraftingRemainingItem();
             if (remainder != null) return remainder.getDefaultInstance();
         }
 

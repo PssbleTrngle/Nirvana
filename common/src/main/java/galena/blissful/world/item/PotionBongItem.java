@@ -37,6 +37,11 @@ public class PotionBongItem extends SmokingItem {
         return PotionUtils.getMobEffects(stack).stream().map(PotionBongItem::modify);
     }
 
+    @Override
+    double getRadius(ItemStack stack, @Nullable Level level, @Nullable LivingEntity entity) {
+        return Services.CONFIG.common().bongRadius();
+    }
+
     public String getDescriptionId(ItemStack stack) {
         return PotionUtils.getPotion(stack).getName(getDescriptionId() + ".effect.");
     }

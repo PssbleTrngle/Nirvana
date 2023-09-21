@@ -11,7 +11,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SuspiciousStewItem;
 import net.minecraft.world.item.UseAnim;
 
@@ -56,10 +55,16 @@ public class HerbalSalveItem extends SuspiciousStewItem {
             effects.forEach(target::addEffect);
 
             if (!(player.getAbilities().instabuild)) {
-                stack.shrink(1);
-                if (stack.isEmpty()) player.addItem(new ItemStack(Items.BOWL));
+                if (stack.getCount() > 1) {
+                    stack.shrink(1);
+                } else {
+                    var remainder = getCraftingRemainingItem();
+                    player.setItemInHand(hand, ItemStack.EMPTY);
+                    if (remainder != null) player.addItem(remainder.getDefaultInstance());
+                }
             }
-            return InteractionResult.SUCCESS;
+
+            return InteractionResult.sidedSuccess(player.level().isClientSide);
         }
 
         return super.interactLivingEntity(stack, player, target, hand);

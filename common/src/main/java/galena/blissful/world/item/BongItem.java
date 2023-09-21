@@ -25,6 +25,11 @@ public class BongItem extends SmokingItem {
         return Stream.of(new MobEffectInstance(BlissfulEffects.PEACE.get(), 20 * Services.CONFIG.common().bongPeaceSeconds(), 0));
     }
 
+    @Override
+    double getRadius(ItemStack stack, @Nullable Level level, @Nullable LivingEntity entity) {
+        return Services.CONFIG.common().bongRadius();
+    }
+
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         PotionUtils.addPotionTooltip(getEffects(stack, level, null).toList(), tooltip, 1.0F);
     }
