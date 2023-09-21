@@ -69,26 +69,27 @@ public class FabricDataGenHelper implements IDataGenHelper {
     public void hempCrop(RegistrateBlockLootTables provider, CropBlock block) {
         provider.add(block, provider.applyExplosionDecay(block,
                 LootTable.lootTable().withPool(LootPool.lootPool()
-                        .add(AlternativesEntry.alternatives(
-                                        LootItem.lootTableItem(BlissfuItems.HEMP)
-                                                .when(maxAge(block))
-                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 2)),
-                                        LootItem.lootTableItem(BlissfuItems.HEMP)
-                                                .when(growthMissing(block, -1))
-                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.62F, 1)),
-                                        LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
+                                .add(AlternativesEntry.alternatives(
+                                                LootItem.lootTableItem(BlissfuItems.HEMP)
+                                                        .when(maxAge(block))
+                                                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 2)),
+                                                LootItem.lootTableItem(BlissfuItems.HEMP)
+                                                        .when(growthMissing(block, -1))
+                                                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.62F, 1)),
+                                                LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
+                                        )
+                                ))
+                        .withPool(LootPool.lootPool()
+                                .add(AlternativesEntry.alternatives(
+                                                LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
+                                                        .when(maxAge(block))
+                                                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 2)),
+                                                LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
+                                                        .when(growthMissing(block, -1))
+                                                        .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 1))
+                                        )
                                 )
                         )
-                        .add(AlternativesEntry.alternatives(
-                                        LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
-                                                .when(maxAge(block))
-                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 2)),
-                                        LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
-                                                .when(growthMissing(block, -1))
-                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 1))
-                                )
-                        )
-                )
         ));
     }
 
