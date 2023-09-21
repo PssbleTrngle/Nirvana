@@ -142,7 +142,7 @@ public abstract class SmokingItem extends Item {
 
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.BOW;
+        return UseAnim.SPYGLASS;
     }
 
     @Override

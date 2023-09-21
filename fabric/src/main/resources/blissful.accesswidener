@@ -5,3 +5,5 @@ accessible	field	net/minecraft/world/item/alchemy/PotionBrewing	ALLOWED_CONTAINE
 #accessible	class	net/minecraft/world/item/alchemy/PotionBrewing$Mix
 #accessible	field	net/minecraft/world/item/alchemy/PotionBrewing	POTION_MIXES	Ljava/util/List;
 #accessible	field	net/minecraft/world/item/alchemy/PotionBrewing	CONTAINER_MIXES	Ljava/util/List;
+
+accessible	method	net/minecraft/client/renderer/entity/ItemRenderer	renderModelLists	(Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemStack;IILcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;)V

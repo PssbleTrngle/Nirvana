@@ -10,13 +10,15 @@ import org.jetbrains.annotations.Nullable;
 
 public class JointClientExtensions implements IClientItemExtensions {
 
+    private static final JointRenderer RENDERER = new JointRenderer();
+
     @Override
     public HumanoidModel.@Nullable ArmPose getArmPose(LivingEntity entity, InteractionHand hand, ItemStack stack) {
-        return HumanoidModel.ArmPose.SPYGLASS;
+        return IClientItemExtensions.super.getArmPose(entity, hand, stack);
     }
 
     @Override
     public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-        return IClientItemExtensions.super.getCustomRenderer();
+        return RENDERER;
     }
 }

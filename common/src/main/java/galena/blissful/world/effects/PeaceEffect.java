@@ -1,6 +1,6 @@
 package galena.blissful.world.effects;
 
-import galena.blissful.index.BlissfuItems;
+import galena.blissful.index.BlissfulTags;
 import galena.blissful.platform.Services;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -20,7 +20,7 @@ public class PeaceEffect extends MobEffect implements IStackingEffect {
     @Override
     public void onIncreasedTo(MobEffectInstance instance, ItemStack source, LivingEntity target, Level level) {
         var hitsTaken = instance.getAmplifier() + 1;
-        if (source.is(BlissfuItems.NAUSEATING) && hitsTaken >= Services.CONFIG.common().nauseaAfterHits()) {
+        if (source.is(BlissfulTags.NAUSEATING) && hitsTaken >= Services.CONFIG.common().nauseaAfterHits()) {
             target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20 * 20, 0));
         }
     }

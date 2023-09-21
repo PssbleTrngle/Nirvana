@@ -2,14 +2,17 @@ package galena.blissful.fabric.services;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import galena.blissful.BlissfulConstants;
 import galena.blissful.index.BlissfuItems;
 import galena.blissful.platform.services.IDataGenHelper;
 import galena.blissful.world.block.HempCropBlock;
 import io.github.fabricators_of_create.porting_lib.models.generators.ConfiguredModel;
+import io.github.fabricators_of_create.porting_lib.models.generators.ModelFile;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -113,4 +116,9 @@ public class FabricDataGenHelper implements IDataGenHelper {
         });
     }
 
+    @Override
+    public void joint(DataGenContext<Item, ? extends Item> context, RegistrateItemModelProvider provider) {
+        provider.withExistingParent(context.getName() + "_flat", "item/generated").texture("layer0", provider.itemTexture(context));
+        provider.getBuilder(context.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity"));
+    }
 }

@@ -8,18 +8,14 @@ import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import galena.blissful.BlissfulClient;
-import galena.blissful.BlissfulConstants;
 import galena.blissful.platform.Services;
 import galena.blissful.world.item.BongItem;
 import galena.blissful.world.item.JointItem;
 import galena.blissful.world.item.LazyFoodItem;
 import galena.blissful.world.item.PotionBongItem;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -99,14 +95,13 @@ public class BlissfuItems {
             .properties(it -> it.craftRemainder(Items.GLASS_BOTTLE))
             .model((c, p) -> p.generated(c, p.modLoc("item/bong_potion"), p.modLoc("item/bong_potion_overlay")))
             .register();
-
-    public static final TagKey<Item> NAUSEATING = TagKey.create(Registries.ITEM, new ResourceLocation(BlissfulConstants.MOD_ID, "nauseating"));
-
     public static final ItemEntry<JointItem> JOINT = REGISTRATE
-            .item("joint", JointItem::new)
+            .item("joint", Services.PLATFORM::createJointItem)
             .properties(it -> it.durability(Services.CONFIG.common().getJointHits()))
-            .tag(NAUSEATING)
+            .tag(BlissfulTags.NAUSEATING)
+            .tag(BlissfulTags.ATTACHED_TO_HEAD)
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
+            .model(Services.DATAGEN::joint)
             .recipe((c, p) -> ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.FOOD, c.get())
                     .requires(Items.PAPER)

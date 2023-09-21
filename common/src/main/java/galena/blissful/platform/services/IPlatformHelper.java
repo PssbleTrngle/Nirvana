@@ -1,13 +1,14 @@
 package galena.blissful.platform.services;
 
 import com.tterrag.registrate.AbstractRegistrate;
+import galena.blissful.world.item.JointItem;
 import net.minecraft.world.item.Item;
-
-import java.util.function.Consumer;
 
 public interface IPlatformHelper {
 
     AbstractRegistrate<?> getRegistrate();
 
-    void registerItemRenderer(Item item, Consumer<Object> consumer);
+    default JointItem createJointItem(Item.Properties properties) {
+        return new JointItem(properties);
+    }
 }

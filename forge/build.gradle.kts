@@ -9,6 +9,7 @@ val jeed_version: String by extra
 val fd_forge_version: String by extra
 val create_forge_version: String by extra
 val flywheel_forge_version: String by extra
+val freecam_forge_version: String by extra
 
 forge {
     enableMixins()
@@ -41,6 +42,7 @@ dependencies {
         modRuntimeOnly("mezz.jei:jei-${mc_version}-forge:${jei_version}")
         modRuntimeOnly("maven.modrinth:just-enough-effect-descriptions-jeed:${jeed_version}")
         modRuntimeOnly("maven.modrinth:farmers-delight:${fd_forge_version}")
+        modRuntimeOnly("maven.modrinth:freecam:${freecam_forge_version}")
         modRuntimeOnly("com.jozufozu.flywheel:flywheel-forge-${mc_version}:${flywheel_forge_version}")
     }
 }

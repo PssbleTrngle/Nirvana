@@ -8,6 +8,9 @@
     "LivingEntityMixin",
     "MobMixin"
   ],
+  "client": [
+    "PlayerItemInHandLayerMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

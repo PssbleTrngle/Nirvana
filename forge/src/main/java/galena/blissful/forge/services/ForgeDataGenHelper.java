@@ -2,8 +2,10 @@ package galena.blissful.forge.services;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import galena.blissful.platform.services.IDataGenHelper;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 
@@ -25,6 +27,11 @@ public class ForgeDataGenHelper implements IDataGenHelper {
 
     @Override
     public void crate(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
+        NOOP();
+    }
+
+    @Override
+    public void joint(DataGenContext<Item, ? extends Item> context, RegistrateItemModelProvider provider) {
         NOOP();
     }
 }
