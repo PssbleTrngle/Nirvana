@@ -7,26 +7,19 @@
     }
   },
   "pattern": [
-    "X", "X"
+    "X",
+    "X"
   ],
   "result": {
-    "item": "farmersdelight:rope",
+    "item": "supplementaries:rope",
     "count": 2
   },
   "fabric:load_conditions": [
     {
       "condition": "fabric:all_mods_loaded",
       "values": [
-        "farmersdelight"
+        "supplementaries"
       ]
-    }, {
-      "condition": "fabric:not",
-      "value": {
-        "condition": "fabric:all_mods_loaded",
-        "values": [
-          "supplementaries"
-        ]
-      }
     }
   ]
 }

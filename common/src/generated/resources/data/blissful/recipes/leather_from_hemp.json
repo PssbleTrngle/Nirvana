@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "h": {
+      "item": "blissful:hemp"
+    }
+  },
+  "pattern": [
+    "hh",
+    "hh"
+  ],
+  "result": {
+    "item": "minecraft:lead"
+  },
+  "show_notification": true
+}

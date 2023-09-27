@@ -20,7 +20,9 @@ public class FabricDataGenerators implements DataGeneratorEntrypoint {
         addDefaultTranslations();
 
         var fileHelper = ExistingFileHelper.withResourcesFromArg();
-        REGISTRATE.setupDatagen(generator.createPack(), fileHelper);
+        var pack = generator.createPack();
+        REGISTRATE.setupDatagen(pack, fileHelper);
+        pack.addProvider(AdditionalBlissfulRecipes::new);
     }
 
     private void addDefaultTranslations() {
