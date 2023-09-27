@@ -2,8 +2,10 @@ package galena.blissful.world.block;
 
 import galena.blissful.index.BlissfuItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -55,4 +57,8 @@ public class HempCropBlock extends CropBlock {
         return SHAPE_BY_AGE[getAge(state)];
     }
 
+    @Override
+    protected int getBonemealAgeIncrease(Level level) {
+        return Mth.nextInt(level.random, 1, 3);
+    }
 }

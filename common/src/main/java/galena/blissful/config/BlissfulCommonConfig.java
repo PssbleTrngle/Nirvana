@@ -35,6 +35,6 @@ public class BlissfulCommonConfig {
     }
 
     public int herbalSalveDuration() {
-        return 20 * 8 * 3;
+        return 160 * 3;
     }
 }
