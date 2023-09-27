@@ -15,7 +15,7 @@ public abstract class LivingEntityMixin {
         @SuppressWarnings("DataFlowIssue")
         var self = (LivingEntity) (Object) (this);
 
-        if(self.hasEffect(BlissfulEffects.PEACE.get())) {
+        if(BlissfulEffects.arePeaceful(self, target)) {
             cir.setReturnValue(false);
         }
     }

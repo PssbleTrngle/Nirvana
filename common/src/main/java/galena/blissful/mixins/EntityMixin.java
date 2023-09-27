@@ -5,6 +5,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
@@ -15,7 +16,7 @@ public abstract class EntityMixin {
     public boolean canAttack(Entity instance, DamageSource damageSource) {
         return (instance instanceof LivingEntity
                 && damageSource.getEntity() instanceof LivingEntity attacker
-                && attacker.hasEffect(BlissfulEffects.PEACE.get())
+                && BlissfulEffects.arePeaceful(instance, attacker)
         ) || instance.isInvulnerable();
     }
 
