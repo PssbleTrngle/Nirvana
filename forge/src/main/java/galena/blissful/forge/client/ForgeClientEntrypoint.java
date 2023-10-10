@@ -1,6 +1,6 @@
 package galena.blissful.forge.client;
 
-import galena.blissful.world.item.JointItem;
+import galena.blissful.client.JointModels;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -13,8 +13,8 @@ public class ForgeClientEntrypoint {
     }
 
     private static void registerModels(ModelEvent.RegisterAdditional event) {
-        event.register(JointItem.HAND_MODEL);
-        event.register(JointItem.FLAT_MODEL);
+        event.register(JointModels.HAND_MODEL);
+        event.register(JointModels.FLAT_MODEL);
     }
 
 }
