@@ -76,11 +76,10 @@ public abstract class SmokingItem extends Item {
     }
 
     private void applyEffects(ItemStack source, Level level, LivingEntity user) {
-        var effects = getEffects(source, level, user);
         var range = getRadius(source, level, user) * 2;
         var targets = level.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(user.position(), range, range, range));
 
-        effects.forEach(effect -> targets.forEach(target ->
+        targets.forEach(target -> getEffects(source, level, user).forEach(effect ->
                 applyEffect(effect, source, target, user)
         ));
     }
