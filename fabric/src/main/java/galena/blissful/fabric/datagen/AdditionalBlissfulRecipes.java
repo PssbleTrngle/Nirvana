@@ -29,7 +29,7 @@ public class AdditionalBlissfulRecipes extends FabricRecipeProvider {
                 .unlockedBy("has_hemp", has(BlissfuItems.HEMP))
                 .save(exporter, new ResourceLocation(BlissfulConstants.MOD_ID, "lead_from_hemp"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Items.LEAD)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Items.LEATHER)
                 .pattern("hh")
                 .pattern("hh")
                 .define('h', BlissfuItems.HEMP.get())
