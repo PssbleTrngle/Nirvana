@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "blissful:block/bliss_bloom_lower"
+    },
+    "half=upper": {
+      "model": "blissful:block/bliss_bloom_upper"
+    }
+  }
+}

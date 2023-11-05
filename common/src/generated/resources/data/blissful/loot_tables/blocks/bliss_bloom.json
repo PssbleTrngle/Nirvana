@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        },
+        {
+          "block": "blissful:bliss_bloom",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "half": "lower"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "blissful:bliss_bloom"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "blissful:blocks/bliss_bloom"
+}

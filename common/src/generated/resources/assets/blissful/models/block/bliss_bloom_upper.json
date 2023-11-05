@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "blissful:block/bliss_bloom_upper"
+  }
+}

@@ -7,6 +7,7 @@ import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.DoublePlantBlock;
 
 public interface IDataGenHelper {
 
@@ -18,4 +19,9 @@ public interface IDataGenHelper {
 
     void joint(DataGenContext<Item, ? extends Item> context, RegistrateItemModelProvider provider);
 
+    void blissBloom(DataGenContext<Block, ? extends DoublePlantBlock> context, RegistrateBlockstateProvider provider);
+
+    void blissBloom(RegistrateBlockLootTables provider, DoublePlantBlock block);
+
+    void feralHemp(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider);
 }

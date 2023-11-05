@@ -16,14 +16,19 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+
+import java.util.stream.Stream;
 
 public class FabricDataGenHelper implements IDataGenHelper {
 
@@ -122,4 +127,42 @@ public class FabricDataGenHelper implements IDataGenHelper {
         provider.withExistingParent(context.getName() + "_flat", "item/generated").texture("layer0", provider.itemTexture(context));
         provider.getBuilder(context.getName()).parent(new ModelFile.UncheckedModelFile("builtin/entity"));
     }
+
+    @Override
+    public void blissBloom(DataGenContext<Block, ? extends DoublePlantBlock> context, RegistrateBlockstateProvider provider) {
+        provider.getVariantBuilder(context.get()).forAllStates(state -> {
+            var half = state.getValue(DoublePlantBlock.HALF);
+            var name = "block/" + context.getName() + "_" + half.getSerializedName();
+            var model = provider.models().cross(name, provider.modLoc(name));
+            return ConfiguredModel.builder()
+                    .modelFile(model)
+                    .build();
+        });
+    }
+
+    @Override
+    public void blissBloom(RegistrateBlockLootTables provider, DoublePlantBlock block) {
+        provider.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
+                .when(ExplosionCondition.survivesExplosion())
+                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(
+                        StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)
+                ))
+                .add(LootItem.lootTableItem(block))
+        ));
+    }
+
+    @Override
+    public void feralHemp(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
+        provider.getVariantBuilder(context.get()).forAllStates($ -> {
+            var name = context.getName();
+            var suffixes = Stream.of("", "_2", "_3");
+
+            return suffixes.map(suffix -> {
+                var builder = ConfiguredModel.builder();
+                var model = provider.models().getExistingFile(provider.modLoc("block/" + name + suffix));
+                return builder.modelFile(model).build()[0];
+            }).toArray(ConfiguredModel[]::new);
+        });
+    }
+
 }

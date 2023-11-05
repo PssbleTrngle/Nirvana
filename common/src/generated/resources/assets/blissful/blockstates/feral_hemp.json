@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "blissful:block/feral_hemp"
+      },
+      {
+        "model": "blissful:block/feral_hemp_2"
+      },
+      {
+        "model": "blissful:block/feral_hemp_3"
+      }
+    ]
+  }
+}

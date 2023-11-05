@@ -10,6 +10,8 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.DoublePlantBlock;
 
 import static galena.blissful.platform.Services.DATAGEN;
 
@@ -46,6 +48,30 @@ public class BlissfulBlocks {
             .tag(BlockTags.MINEABLE_WITH_AXE)
             .item()
             .tab(CreativeModeTabs.BUILDING_BLOCKS)
+            .build()
+            .register();
+
+    public static final BlockEntry<DoublePlantBlock> BLISS_BLOOM = REGISTRATE
+            .block("bliss_bloom", DoublePlantBlock::new)
+            .initialProperties(() -> Blocks.ROSE_BUSH)
+            .addLayer(() -> RenderType::cutout)
+            .blockstate(DATAGEN::blissBloom)
+            .loot(DATAGEN::blissBloom)
+            .tag(BlockTags.TALL_FLOWERS)
+            .item()
+            .tab(CreativeModeTabs.NATURAL_BLOCKS)
+            .model((c, p) -> p.generated(c, p.modLoc("block/" + c.getName() + "_upper")))
+            .build()
+            .register();
+
+    public static final BlockEntry<BushBlock> FERAL_HEMP = REGISTRATE
+            .block("feral_hemp", BushBlock::new)
+            .initialProperties(() -> Blocks.FERN)
+            .addLayer(() -> RenderType::cutout)
+            .blockstate(DATAGEN::feralHemp)
+            .tag(BlockTags.SMALL_FLOWERS)
+            .item()
+            .tab(CreativeModeTabs.NATURAL_BLOCKS)
             .build()
             .register();
 

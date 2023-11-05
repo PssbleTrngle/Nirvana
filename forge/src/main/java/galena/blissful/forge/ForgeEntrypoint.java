@@ -8,6 +8,7 @@ import galena.blissful.forge.client.ForgeClientEntrypoint;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @Mod(BlissfulConstants.MOD_ID)
 public class ForgeEntrypoint {
@@ -19,6 +20,11 @@ public class ForgeEntrypoint {
 
         //noinspection Convert2MethodRef
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ForgeClientEntrypoint.init());
+
+        REGISTRATE.get()
+                .object("replace_item")
+                .generic(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, () -> ReplaceItemLootModifier.CODEC)
+                .register();
     }
 
 }
