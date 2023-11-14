@@ -1,6 +1,6 @@
 package galena.blissful.world.recipe;
 
-import galena.blissful.index.BlissfuItems;
+import galena.blissful.index.BlissfulItems;
 import galena.blissful.index.BlissfulRecipeTypes;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +33,7 @@ public class HerbalSalveRecipe extends CustomRecipe {
         for (int i = 0; i < container.getContainerSize(); ++i) {
             var stack = container.getItem(i);
 
-            if (BlissfuItems.WEED.isIn(stack)) {
+            if (BlissfulItems.WEED.isIn(stack)) {
                 weedCount++;
             } else if (stack.is(ItemTags.SMALL_FLOWERS)) {
                 if (flowerType == null) flowerType = stack.getItem();
@@ -52,7 +52,7 @@ public class HerbalSalveRecipe extends CustomRecipe {
 
     @Override
     public ItemStack assemble(CraftingContainer container, RegistryAccess registryAccess) {
-        var result = BlissfuItems.HERBAL_SALVE.asStack();
+        var result = BlissfulItems.HERBAL_SALVE.asStack();
 
         for(int i = 0; i < container.getContainerSize(); ++i) {
             ItemStack stack = container.getItem(i);

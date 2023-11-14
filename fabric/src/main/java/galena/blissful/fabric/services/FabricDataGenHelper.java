@@ -5,11 +5,13 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import galena.blissful.BlissfulConstants;
-import galena.blissful.index.BlissfuItems;
+import galena.blissful.index.BlissfulItems;
+import galena.blissful.index.BlissfulTags;
 import galena.blissful.platform.services.IDataGenHelper;
 import galena.blissful.world.block.HempCropBlock;
 import io.github.fabricators_of_create.porting_lib.models.generators.ConfiguredModel;
 import io.github.fabricators_of_create.porting_lib.models.generators.ModelFile;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -24,9 +26,12 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.ExplosionCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.stream.Stream;
 
@@ -75,21 +80,21 @@ public class FabricDataGenHelper implements IDataGenHelper {
         provider.add(block, provider.applyExplosionDecay(block,
                 LootTable.lootTable().withPool(LootPool.lootPool()
                                 .add(AlternativesEntry.alternatives(
-                                                LootItem.lootTableItem(BlissfuItems.HEMP)
+                                                LootItem.lootTableItem(BlissfulItems.HEMP)
                                                         .when(maxAge(block))
                                                         .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 2)),
-                                                LootItem.lootTableItem(BlissfuItems.HEMP)
+                                                LootItem.lootTableItem(BlissfulItems.HEMP)
                                                         .when(growthMissing(block, -1))
                                                         .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.62F, 1)),
-                                                LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
+                                                LootItem.lootTableItem(BlissfulItems.HEMP_SEEDS)
                                         )
                                 ))
                         .withPool(LootPool.lootPool()
                                 .add(AlternativesEntry.alternatives(
-                                                LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
+                                                LootItem.lootTableItem(BlissfulItems.HEMP_SEEDS)
                                                         .when(maxAge(block))
                                                         .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 2)),
-                                                LootItem.lootTableItem(BlissfuItems.HEMP_SEEDS)
+                                                LootItem.lootTableItem(BlissfulItems.HEMP_SEEDS)
                                                         .when(growthMissing(block, -1))
                                                         .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.57F, 1))
                                         )
@@ -165,4 +170,16 @@ public class FabricDataGenHelper implements IDataGenHelper {
         });
     }
 
+    @Override
+    public void feralHemp(RegistrateBlockLootTables provider, Block block) {
+        provider.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
+                .when(ExplosionCondition.survivesExplosion())
+                .add(AlternativesEntry.alternatives(
+                        LootItem.lootTableItem(block)
+                                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(BlissfulTags.SHEARS))),
+                        LootItem.lootTableItem(BlissfulItems.HEMP)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0F, 2F)))
+                ))
+        ));
+    }
 }

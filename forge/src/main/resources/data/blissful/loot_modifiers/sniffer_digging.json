@@ -4,14 +4,12 @@
     {
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:gameplay/sniffer_digging"
-    },
-    {
-      "chance": 0.5,
+    }, {
+      "chance": 0.333,
       "condition": "minecraft:random_chance"
     }
   ],
   "items": [
-    "blissful:bliss_bloom",
-    "blissful:feral_hemp"
+    "blissful:bliss_bloom"
   ]
 }

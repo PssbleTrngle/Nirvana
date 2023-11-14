@@ -56,7 +56,7 @@ public class BlissfulRecipeTypes {
                 .filter(FlowerBlock.class::isInstance)
                 .map(FlowerBlock.class::cast)
                 .map(flower -> {
-                    ItemStack output = BlissfuItems.HERBAL_SALVE.asStack();
+                    ItemStack output = BlissfulItems.HERBAL_SALVE.asStack();
                     MobEffect mobeffect = flower.getSuspiciousEffect();
                     SuspiciousStewItem.saveMobEffect(output, mobeffect, flower.getEffectDuration());
 
@@ -67,7 +67,7 @@ public class BlissfulRecipeTypes {
     public static List<CraftingRecipe> createSalveRecipes() {
         String group = "jei.herbal_salves";
         Ingredient bowl = Ingredient.of(Items.BOWL);
-        Ingredient weed = Ingredient.of(BlissfuItems.WEED);
+        Ingredient weed = Ingredient.of(BlissfulItems.WEED);
 
         return getSalves().<CraftingRecipe>map(pair -> {
                     var flowerBlock = pair.getFirst().asItem();

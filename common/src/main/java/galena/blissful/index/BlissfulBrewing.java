@@ -19,7 +19,7 @@ public class BlissfulBrewing {
     }
 
     private static void registerMix(ItemStack ingredient, ItemStack from) {
-        var input = PotionUtils.getPotion(from) == Potions.WATER ? BlissfuItems.BONG.asStack() : from;
+        var input = PotionUtils.getPotion(from) == Potions.WATER ? BlissfulItems.BONG.asStack() : from;
         var output = PotionBrewing.mix(ingredient, from);
         if (output == from) return;
         BREWING.addRecipe(Ingredient.of(input), Ingredient.of(ingredient), output);
@@ -28,7 +28,7 @@ public class BlissfulBrewing {
     private static void registerBongRecipes() {
         var waterBottle = withPotion(Items.POTION, Potions.WATER);
 
-        BREWING.addRecipe(Ingredient.of(waterBottle), Ingredient.of(BlissfuItems.WEED), BlissfuItems.BONG.asStack());
+        BREWING.addRecipe(Ingredient.of(waterBottle), Ingredient.of(BlissfulItems.WEED), BlissfulItems.BONG.asStack());
 
         var catalysts = BuiltInRegistries.ITEM.stream()
                 .map(ItemStack::new)
@@ -36,7 +36,7 @@ public class BlissfulBrewing {
                 .toList();
 
         BuiltInRegistries.POTION.stream().forEach(potion -> {
-            var from = withPotion(BlissfuItems.POTION_BONG, potion);
+            var from = withPotion(BlissfulItems.POTION_BONG, potion);
             var potionStack = withPotion(Items.POTION, potion);
             catalysts.stream()
                     .filter(it -> PotionBrewing.hasMix(potionStack, it))

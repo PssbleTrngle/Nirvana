@@ -1,3 +1,6 @@
 {
-  "parent": "blissful:block/feral_hemp"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "blissful:item/feral_hemp"
+  }
 }

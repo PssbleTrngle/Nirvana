@@ -5,7 +5,7 @@ import com.simibubi.create.content.fluids.transfer.FillingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.foundation.fluid.FluidIngredient;
 import galena.blissful.BlissfulConstants;
-import galena.blissful.index.BlissfuItems;
+import galena.blissful.index.BlissfulItems;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -19,11 +19,11 @@ public class CreateCompat {
 
     private static List<FillingRecipe> getBongFillingRecipes(IIngredientManager ingredientManager) {
         var items = ingredientManager.getAllIngredients(VanillaTypes.ITEM_STACK);
-        var bongs = items.stream().filter(BlissfuItems.POTION_BONG::isIn);
+        var bongs = items.stream().filter(BlissfulItems.POTION_BONG::isIn);
         return bongs.map(stack -> {
             var potion = PotionFluidHandler.getFluidFromPotionItem(stack);
             return new ProcessingRecipeBuilder<>(FillingRecipe::new, new ResourceLocation(BlissfulConstants.MOD_ID, "bong"))
-                    .withItemIngredients(Ingredient.of(BlissfuItems.BONG))
+                    .withItemIngredients(Ingredient.of(BlissfulItems.BONG))
                     .withFluidIngredients(FluidIngredient.fromFluidStack(potion))
                     .withSingleItemOutput(stack)
                     .build();

@@ -30,7 +30,7 @@ import net.minecraft.world.item.alchemy.Potions;
 
 import java.util.function.Consumer;
 
-public class BlissfuItems {
+public class BlissfulItems {
 
     private static final AbstractRegistrate<?> REGISTRATE = Services.PLATFORM.getRegistrate();
 
@@ -97,7 +97,7 @@ public class BlissfuItems {
 
     public static final ItemEntry<PotionBongItem> POTION_BONG = REGISTRATE
             .item("potion_bong", PotionBongItem::new)
-            .transform(it -> it.tab(CreativeModeTabs.FOOD_AND_DRINKS, BlissfuItems.addPotionStacks(it)))
+            .transform(it -> it.tab(CreativeModeTabs.FOOD_AND_DRINKS, BlissfulItems.addPotionStacks(it)))
             .color(() -> () -> BlissfulClient.POTION_COLOR)
             .properties(it -> it.durability(Services.CONFIG.common().getBongHits()))
             .properties(it -> it.craftRemainder(Items.GLASS_BOTTLE))
@@ -123,7 +123,7 @@ public class BlissfuItems {
             .item("herbal_salve", HerbalSalveItem::new)
             .properties(it -> it.stacksTo(1))
             .properties(it -> it.craftRemainder(Items.BOWL))
-            .tab(CreativeModeTabs.FOOD_AND_DRINKS, BlissfuItems.addSalveStacks())
+            .tab(CreativeModeTabs.FOOD_AND_DRINKS, BlissfulItems.addSalveStacks())
             .register();
 
     public static void register() {

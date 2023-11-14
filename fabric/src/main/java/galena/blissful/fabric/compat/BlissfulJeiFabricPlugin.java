@@ -1,7 +1,7 @@
 package galena.blissful.fabric.compat;
 
 import galena.blissful.compat.BlissfulJeiCompat;
-import galena.blissful.index.BlissfuItems;
+import galena.blissful.index.BlissfulItems;
 import galena.blissful.index.BlissfulRecipeTypes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -23,7 +23,7 @@ public class BlissfulJeiFabricPlugin implements IModPlugin {
 
     @Override
     public void registerItemSubtypes(ISubtypeRegistration registration) {
-        registration.registerSubtypeInterpreter(BlissfuItems.POTION_BONG.get(), BlissfulJeiCompat::interpretPotion);
+        registration.registerSubtypeInterpreter(BlissfulItems.POTION_BONG.get(), BlissfulJeiCompat::interpretPotion);
     }
 
 }
