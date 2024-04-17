@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "nirvana:block/weed_crate_bottom",
+    "east": "nirvana:block/weed_crate_side",
+    "north": "nirvana:block/weed_crate_front",
+    "particle": "nirvana:block/weed_crate_top",
+    "south": "nirvana:block/weed_crate_back",
+    "up": "nirvana:block/weed_crate_top",
+    "west": "nirvana:block/weed_crate_side"
+  }
+}

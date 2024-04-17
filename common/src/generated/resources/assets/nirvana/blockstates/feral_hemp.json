@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "nirvana:block/feral_hemp"
+      },
+      {
+        "model": "nirvana:block/feral_hemp_2"
+      },
+      {
+        "model": "nirvana:block/feral_hemp_3"
+      }
+    ]
+  }
+}

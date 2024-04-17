@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "nirvana:block/hemp_crate_bottom",
+    "east": "nirvana:block/hemp_crate_side",
+    "north": "nirvana:block/hemp_crate_front",
+    "particle": "nirvana:block/hemp_crate_top",
+    "south": "nirvana:block/hemp_crate_back",
+    "up": "nirvana:block/hemp_crate_top",
+    "west": "nirvana:block/hemp_crate_side"
+  }
+}

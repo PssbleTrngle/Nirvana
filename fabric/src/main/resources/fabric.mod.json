@@ -12,10 +12,10 @@
   "license": "https://github.com/${repository}/blob/1.20.x/LICENSE.txt",
   "environment": "*",
   "entrypoints": {
-    "main": ["galena.blissful.fabric.FabricEntrypoint"],
-    "client": ["galena.blissful.fabric.client.FabricClientEntrypoint"],
-    "fabric-datagen": ["galena.blissful.fabric.datagen.FabricDataGenerators"],
-    "jei_mod_plugin": ["galena.blissful.fabric.compat.BlissfulJeiFabricPlugin"]
+    "main": ["galena.nirvana.fabric.FabricEntrypoint"],
+    "client": ["galena.nirvana.fabric.client.FabricClientEntrypoint"],
+    "fabric-datagen": ["galena.nirvana.fabric.datagen.FabricDataGenerators"],
+    "jei_mod_plugin": ["galena.nirvana.fabric.compat.NirvanaJeiFabricPlugin"]
   },
   "mixins": ["${mod_id}.mixins.json", "${mod_id}.fabric.mixins.json"],
   "depends": {

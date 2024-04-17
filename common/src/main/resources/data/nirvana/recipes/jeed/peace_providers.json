@@ -1,0 +1,17 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": {
+    "id": "nirvana:peace"
+  },
+  "providers": [
+    {
+      "item": "nirvana:weed"
+    },
+    {
+      "item": "nirvana:joint"
+    },
+    {
+      "item": "nirvana:bong"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "nirvana:hemp"
+    }
+  },
+  "pattern": [
+    "X",
+    "X"
+  ],
+  "result": {
+    "item": "supplementaries:rope",
+    "count": 2
+  },
+  "conditions": [
+    {
+      "modid": "supplementaries",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

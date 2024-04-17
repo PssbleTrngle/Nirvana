@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "nirvana:block/weed_crate",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "nirvana:block/weed_crate",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "nirvana:block/weed_crate"
+    },
+    "facing=west": {
+      "model": "nirvana:block/weed_crate",
+      "y": 90
+    }
+  }
+}

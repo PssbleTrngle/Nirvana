@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "nirvana:item/bong_potion",
+    "layer1": "nirvana:item/bong_potion_overlay"
+  }
+}

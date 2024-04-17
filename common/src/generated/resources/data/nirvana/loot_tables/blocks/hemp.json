@@ -1,0 +1,133 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "nirvana:hemp",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "5"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:binomial_with_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "extra": 2,
+                    "probability": 0.57
+                  }
+                }
+              ],
+              "name": "nirvana:hemp"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "nirvana:hemp",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "6"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:binomial_with_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "extra": 1,
+                    "probability": 0.62
+                  }
+                }
+              ],
+              "name": "nirvana:hemp"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "nirvana:hemp_seeds"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "nirvana:hemp",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "5"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:binomial_with_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "extra": 2,
+                    "probability": 0.57
+                  }
+                }
+              ],
+              "name": "nirvana:hemp_seeds"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "nirvana:hemp",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "6"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "enchantment": "minecraft:fortune",
+                  "formula": "minecraft:binomial_with_bonus_count",
+                  "function": "minecraft:apply_bonus",
+                  "parameters": {
+                    "extra": 1,
+                    "probability": 0.57
+                  }
+                }
+              ],
+              "name": "nirvana:hemp_seeds"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "nirvana:blocks/hemp"
+}

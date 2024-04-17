@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "nirvana:block/bliss_bloom_lower"
+    },
+    "half=upper": {
+      "model": "nirvana:block/bliss_bloom_upper"
+    }
+  }
+}

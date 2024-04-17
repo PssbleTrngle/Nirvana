@@ -1,6 +1,0 @@
-{
-  "parent": "blissful:block/crop_cross",
-  "textures": {
-    "cross": "blissful:block/hemp_1"
-  }
-}

@@ -1,0 +1,11 @@
+{
+  "type": "jeed:potion_provider",
+  "providers": [
+    {
+      "item": "nirvana:potion_bong"
+    },
+    {
+      "item": "nirvana:herbal_salve"
+    }
+  ]
+}

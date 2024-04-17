@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#blissful:has_feature/feral_hemp",
-  "features": "blissful:patch_feral_hemp",
-  "step": "vegetal_decoration"
-}
