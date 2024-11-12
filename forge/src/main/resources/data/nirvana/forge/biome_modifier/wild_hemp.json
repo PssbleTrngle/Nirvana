@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#nirvana:has_feature/wild_hemp",
+  "features": "nirvana:patch_wild_hemp",
+  "step": "vegetal_decoration"
+}

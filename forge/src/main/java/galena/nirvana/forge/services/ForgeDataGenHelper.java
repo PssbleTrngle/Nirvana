@@ -47,12 +47,12 @@ public class ForgeDataGenHelper implements IDataGenHelper {
     }
 
     @Override
-    public void feralHemp(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
+    public void wildHemp(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
         NOOP();
     }
 
     @Override
-    public void feralHemp(RegistrateBlockLootTables provider, Block block) {
+    public void wildHemp(RegistrateBlockLootTables provider, Block block) {
         NOOP();
     }
 }

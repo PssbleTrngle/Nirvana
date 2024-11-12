@@ -33,8 +33,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
-import java.util.stream.Stream;
-
 public class FabricDataGenHelper implements IDataGenHelper {
 
     private ResourceLocation withSuffix(ResourceLocation base, String suffix) {
@@ -157,21 +155,13 @@ public class FabricDataGenHelper implements IDataGenHelper {
     }
 
     @Override
-    public void feralHemp(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
-        provider.getVariantBuilder(context.get()).forAllStates($ -> {
-            var name = context.getName();
-            var suffixes = Stream.of("", "_2", "_3");
-
-            return suffixes.map(suffix -> {
-                var builder = ConfiguredModel.builder();
-                var model = provider.models().getExistingFile(provider.modLoc("block/" + name + suffix));
-                return builder.modelFile(model).build()[0];
-            }).toArray(ConfiguredModel[]::new);
-        });
+    public void wildHemp(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider) {
+        var block = context.get();
+        provider.simpleBlock(block, provider.models().cross(context.getName(), provider.blockTexture(block)));
     }
 
     @Override
-    public void feralHemp(RegistrateBlockLootTables provider, Block block) {
+    public void wildHemp(RegistrateBlockLootTables provider, Block block) {
         provider.add(block, LootTable.lootTable().withPool(LootPool.lootPool()
                 .when(ExplosionCondition.survivesExplosion())
                 .add(AlternativesEntry.alternatives(

@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#nirvana:has_feature/feral_hemp",
-  "features": "nirvana:patch_feral_hemp",
-  "step": "vegetal_decoration"
-}

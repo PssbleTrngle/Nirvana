@@ -22,7 +22,7 @@
                   }
                 }
               ],
-              "name": "nirvana:feral_hemp"
+              "name": "nirvana:wild_hemp"
             },
             {
               "type": "minecraft:item",
@@ -45,5 +45,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "nirvana:blocks/feral_hemp"
+  "random_sequence": "nirvana:blocks/wild_hemp"
 }

@@ -23,7 +23,7 @@ public interface IDataGenHelper {
 
     void blissBloom(RegistrateBlockLootTables provider, DoublePlantBlock block);
 
-    void feralHemp(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider);
+    void wildHemp(DataGenContext<Block, ? extends Block> context, RegistrateBlockstateProvider provider);
 
-    void feralHemp(RegistrateBlockLootTables provider, Block block);
+    void wildHemp(RegistrateBlockLootTables provider, Block block);
 }

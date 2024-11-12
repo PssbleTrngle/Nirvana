@@ -62,16 +62,16 @@ public class NirvanaBlocks {
             .build()
             .register();
 
-    public static final BlockEntry<BushBlock> FERAL_HEMP = REGISTRATE
-            .block("feral_hemp", BushBlock::new)
+    public static final BlockEntry<BushBlock> WILD_HEMP = REGISTRATE
+            .block("wild_hemp", BushBlock::new)
             .initialProperties(() -> Blocks.FERN)
             .addLayer(() -> RenderType::cutout)
-            .blockstate(Services.DATAGEN::feralHemp)
-            .loot(Services.DATAGEN::feralHemp)
+            .blockstate(Services.DATAGEN::wildHemp)
+            .loot(Services.DATAGEN::wildHemp)
             .tag(BlockTags.SMALL_FLOWERS)
             .item()
             .tab(CreativeModeTabs.NATURAL_BLOCKS)
-            .model((c, p) -> p.generated(c, p.modLoc("item/" + c.getName())))
+            .model((c, p) -> p.blockSprite(c))
             .build()
             .register();
 

@@ -20,7 +20,7 @@ public class FabricEntrypoint implements ModInitializer {
 
     public static final FabricNirvanaRegistrate REGISTRATE = new FabricNirvanaRegistrate(NirvanaConstants.MOD_ID);
 
-    private static final ResourceKey<PlacedFeature> FERAL_HEMP_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(NirvanaConstants.MOD_ID, "patch_feral_hemp"));
+    private static final ResourceKey<PlacedFeature> WILD_HEMP_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(NirvanaConstants.MOD_ID, "patch_wild_hemp"));
 
     @Override
     public void onInitialize() {
@@ -35,7 +35,7 @@ public class FabricEntrypoint implements ModInitializer {
             }
         });
 
-        BiomeModifications.addFeature(BiomeSelectors.tag(NirvanaTags.GENERATES_FERAL_HEMP), GenerationStep.Decoration.VEGETAL_DECORATION, FERAL_HEMP_FEATURE);
+        BiomeModifications.addFeature(BiomeSelectors.tag(NirvanaTags.GENERATES_WILD_HEMP), GenerationStep.Decoration.VEGETAL_DECORATION, WILD_HEMP_FEATURE);
     }
 
 }

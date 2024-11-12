@@ -16,7 +16,7 @@ public class NirvanaTags {
 
     public static final TagKey<Item> ATTACHED_TO_HEAD = TagKey.create(Registries.ITEM, new ResourceLocation(NirvanaConstants.MOD_ID, "attached_to_head"));
 
-    public static final TagKey<Biome> GENERATES_FERAL_HEMP = TagKey.create(Registries.BIOME, new ResourceLocation(NirvanaConstants.MOD_ID, "has_feature/feral_hemp"));
+    public static final TagKey<Biome> GENERATES_WILD_HEMP = TagKey.create(Registries.BIOME, new ResourceLocation(NirvanaConstants.MOD_ID, "has_feature/wild_hemp"));
 
     public static final TagKey<Item> SHEARS = TagKey.create(Registries.ITEM, new ResourceLocation(NirvanaConstants.MOD_ID, "shears"));
 

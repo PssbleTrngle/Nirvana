@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "nirvana:item/feral_hemp"
+    "layer0": "nirvana:block/wild_hemp"
   }
 }
