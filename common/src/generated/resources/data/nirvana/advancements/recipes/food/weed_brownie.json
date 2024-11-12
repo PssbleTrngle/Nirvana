@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nirvana:weed_brownies"
+        "recipe": "nirvana:weed_brownie"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nirvana:weed_brownies"
+      "nirvana:weed_brownie"
     ]
   },
   "sends_telemetry_event": false

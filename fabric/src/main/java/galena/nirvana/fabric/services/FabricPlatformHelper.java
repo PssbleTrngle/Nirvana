@@ -1,13 +1,13 @@
 package galena.nirvana.fabric.services;
 
-import com.tterrag.registrate.AbstractRegistrate;
 import galena.nirvana.fabric.FabricEntrypoint;
+import galena.nirvana.platform.registrate.NirvanaRegistrate;
 import galena.nirvana.platform.services.IPlatformHelper;
 
 public class FabricPlatformHelper implements IPlatformHelper {
 
     @Override
-    public AbstractRegistrate<?> getRegistrate() {
+    public NirvanaRegistrate<?> getRegistrate() {
         return FabricEntrypoint.REGISTRATE;
     }
 

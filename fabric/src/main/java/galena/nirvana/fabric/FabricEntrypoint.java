@@ -1,6 +1,5 @@
 package galena.nirvana.fabric;
 
-import com.tterrag.registrate.Registrate;
 import galena.nirvana.NirvanaCommon;
 import galena.nirvana.NirvanaConstants;
 import galena.nirvana.index.NirvanaBlocks;
@@ -19,7 +18,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 
 public class FabricEntrypoint implements ModInitializer {
 
-    public static final Registrate REGISTRATE = Registrate.create(NirvanaConstants.MOD_ID);
+    public static final FabricNirvanaRegistrate REGISTRATE = new FabricNirvanaRegistrate(NirvanaConstants.MOD_ID);
 
     private static final ResourceKey<PlacedFeature> FERAL_HEMP_FEATURE = ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(NirvanaConstants.MOD_ID, "patch_feral_hemp"));
 

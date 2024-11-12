@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "nirvana:item/weed_brownies"
+    "layer0": "nirvana:item/weed_brownie"
   }
 }

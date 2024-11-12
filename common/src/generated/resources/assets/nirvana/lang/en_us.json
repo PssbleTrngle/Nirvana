@@ -11,6 +11,8 @@
   "item.nirvana.hemp_seeds": "Hemp Seeds",
   "item.nirvana.herbal_salve": "Herbal Salve",
   "item.nirvana.joint": "Joint",
+  "item.nirvana.music_disc_jam": "Music Disc",
+  "item.nirvana.music_disc_jam.desc": "Jam - firch",
   "item.nirvana.potion_bong": "Potion Bong",
   "item.nirvana.potion_bong.effect.awkward": "Awkward Bong",
   "item.nirvana.potion_bong.effect.empty": "Empty Bong",
@@ -33,6 +35,6 @@
   "item.nirvana.potion_bong.effect.water": "Water Bong",
   "item.nirvana.potion_bong.effect.water_breathing": "Bong of Water Breathing",
   "item.nirvana.potion_bong.effect.weakness": "Bong of Weakness",
-  "item.nirvana.weed": "Weed",
-  "item.nirvana.weed_brownies": "Weed Brownies"
+  "item.nirvana.weed": "Weed Bud",
+  "item.nirvana.weed_brownie": "Weed Brownie"
 }

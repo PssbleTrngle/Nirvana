@@ -3,6 +3,7 @@ package galena.nirvana.index;
 import com.mojang.datafixers.util.Pair;
 import com.tterrag.registrate.AbstractRegistrate;
 import com.tterrag.registrate.builders.ItemBuilder;
+import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.CreativeModeTabModifier;
 import com.tterrag.registrate.util.DataIngredient;
@@ -14,10 +15,12 @@ import galena.nirvana.world.item.BongItem;
 import galena.nirvana.world.item.HerbalSalveItem;
 import galena.nirvana.world.item.JointItem;
 import galena.nirvana.world.item.LazyFoodItem;
+import galena.nirvana.world.item.ModdedRecordItem;
 import galena.nirvana.world.item.PotionBongItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -25,6 +28,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 
@@ -47,6 +52,7 @@ public class NirvanaItems {
 
     public static final ItemEntry<Item> WEED = REGISTRATE
             .item("weed", Item::new)
+            .lang("Weed Bud")
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
             .recipe((c, p) -> {
                 p.smelting(DataIngredient.items(HEMP.get()), RecipeCategory.MISC, c, 0.25F);
@@ -55,15 +61,15 @@ public class NirvanaItems {
             })
             .register();
 
-    private static final NonNullSupplier<FoodProperties> BROWNIES_FOOD = NonNullSupplier.lazy(() -> new FoodProperties.Builder()
+    private static final NonNullSupplier<FoodProperties> BROWNIE_FOOD = NonNullSupplier.lazy(() -> new FoodProperties.Builder()
             .effect(new MobEffectInstance(NirvanaEffects.PEACE.get(), 20 * Services.CONFIG.common().browniesPeaceSeconds(), 0), 1.0F)
             .nutrition(2)
             .saturationMod(0.1F)
             .build()
     );
 
-    public static final ItemEntry<LazyFoodItem> WEED_BROWNIES = REGISTRATE
-            .item("weed_brownies", p -> new LazyFoodItem(p, BROWNIES_FOOD))
+    public static final ItemEntry<LazyFoodItem> WEED_BROWNIE = REGISTRATE
+            .item("weed_brownie", p -> new LazyFoodItem(p, BROWNIE_FOOD))
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
             .recipe((c, p) -> ShapelessRecipeBuilder
                     .shapeless(RecipeCategory.FOOD, c.get(), 2)
@@ -124,6 +130,18 @@ public class NirvanaItems {
             .properties(it -> it.stacksTo(1))
             .properties(it -> it.craftRemainder(Items.BOWL))
             .tab(CreativeModeTabs.FOOD_AND_DRINKS, NirvanaItems.addSalveStacks())
+            .register();
+
+    public static final ItemEntry<? extends RecordItem> DISC_JAM = REGISTRATE
+            .item("music_disc_jam", props -> new ModdedRecordItem(13, NirvanaSounds.JAM, props, 150))
+            .properties(it -> it.stacksTo(1))
+            .properties(it -> it.rarity(Rarity.RARE))
+            .tab(CreativeModeTabs.TOOLS_AND_UTILITIES)
+            .tag(ItemTags.MUSIC_DISCS)
+            .setData(ProviderType.LANG, (context, provider) -> {
+                provider.add(context.get(), "Music Disc");
+                provider.add(context.get().getDescriptionId() + ".desc", "Jam - firch");
+            })
             .register();
 
     public static void register() {

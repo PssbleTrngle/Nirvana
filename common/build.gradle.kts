@@ -3,7 +3,7 @@ val registrate_fabric_version: String by extra
 val jei_version: String by extra
 
 plugins {
-    id("dev.architectury.loom") version ("1.2-SNAPSHOT")
+    id("dev.architectury.loom") version ("1.7-SNAPSHOT")
 }
 
 common {

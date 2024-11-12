@@ -11,6 +11,8 @@
   "item.nirvana.hemp_seeds": "spǝǝS dɯǝH",
   "item.nirvana.herbal_salve": "ǝʌןɐS ןɐqɹǝH",
   "item.nirvana.joint": "ʇuıoſ",
+  "item.nirvana.music_disc_jam": "ɔsıᗡ ɔısnW",
+  "item.nirvana.music_disc_jam.desc": "ɥɔɹıɟ - ɯɐſ",
   "item.nirvana.potion_bong": "buoᗺ uoıʇoԀ",
   "item.nirvana.potion_bong.effect.awkward": "buoᗺ pɹɐʍʞʍⱯ",
   "item.nirvana.potion_bong.effect.empty": "buoᗺ ʎʇdɯƎ",
@@ -33,6 +35,6 @@
   "item.nirvana.potion_bong.effect.water": "buoᗺ ɹǝʇɐM",
   "item.nirvana.potion_bong.effect.water_breathing": "buıɥʇɐǝɹᗺ ɹǝʇɐM ɟo buoᗺ",
   "item.nirvana.potion_bong.effect.weakness": "ssǝuʞɐǝM ɟo buoᗺ",
-  "item.nirvana.weed": "pǝǝM",
-  "item.nirvana.weed_brownies": "sǝıuʍoɹᗺ pǝǝM"
+  "item.nirvana.weed": "pnᗺ pǝǝM",
+  "item.nirvana.weed_brownie": "ǝıuʍoɹᗺ pǝǝM"
 }
