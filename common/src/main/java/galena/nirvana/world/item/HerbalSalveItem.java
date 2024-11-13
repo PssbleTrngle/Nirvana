@@ -1,12 +1,8 @@
 package galena.nirvana.world.item;
 
-import com.google.common.collect.ImmutableList;
 import galena.nirvana.platform.Services;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -22,29 +18,8 @@ public class HerbalSalveItem extends SuspiciousStewItem {
         super(properties);
     }
 
-    public static List<MobEffectInstance> getEffects(ItemStack stack) {
-        var builder = ImmutableList.<MobEffectInstance>builder();
-
-        CompoundTag compoundTag = stack.getTag();
-
-        if (compoundTag != null && compoundTag.contains("Effects", 9)) {
-            ListTag listTag = compoundTag.getList("Effects", 10);
-
-            for (int i = 0; i < listTag.size(); ++i) {
-                CompoundTag effectTag = listTag.getCompound(i);
-                int duration;
-                if (effectTag.contains("EffectDuration", 99)) {
-                    duration = effectTag.getInt("EffectDuration");
-                } else {
-                    duration = Services.CONFIG.common().herbalSalveDuration();
-                }
-
-                MobEffect mobEffect = MobEffect.byId(effectTag.getInt("EffectId"));
-                if (mobEffect != null) builder.add(new MobEffectInstance(mobEffect, duration));
-            }
-        }
-
-        return builder.build();
+    private static List<MobEffectInstance> getEffects(ItemStack stack) {
+        return SuspiciousItem.getEffects(stack, Services.CONFIG.common().herbalSalveDuration());
     }
 
     @Override

@@ -1,4 +1,8 @@
 {
-  "type": "nirvana:herbal_salve_crafting",
-  "category": "misc"
+  "type": "nirvana:suspicious_crafting",
+  "category": "misc",
+  "result": "nirvana:herbal_salve",
+  "base": "minecraft:bowl",
+  "flowers": 3,
+  "weed": 3
 }

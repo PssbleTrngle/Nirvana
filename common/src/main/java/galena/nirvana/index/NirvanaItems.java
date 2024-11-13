@@ -17,6 +17,7 @@ import galena.nirvana.world.item.JointItem;
 import galena.nirvana.world.item.LazyFoodItem;
 import galena.nirvana.world.item.ModdedRecordItem;
 import galena.nirvana.world.item.PotionBongItem;
+import galena.nirvana.world.item.SuspiciousPipeItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
@@ -95,8 +96,8 @@ public class NirvanaItems {
                 .forEach(modifier::accept);
     }
 
-    private static <T extends Item> Consumer<CreativeModeTabModifier> addSalveStacks() {
-        return modifier -> NirvanaRecipeTypes.getSalves()
+    private static <T extends Item> Consumer<CreativeModeTabModifier> addSuspiciousStack(ItemBuilder<T, ?> item) {
+        return modifier -> NirvanaRecipeTypes.getSuspiciousVariants(item.getEntry())
                 .map(Pair::getSecond)
                 .forEach(modifier::accept);
     }
@@ -107,12 +108,15 @@ public class NirvanaItems {
             .color(() -> () -> NirvanaClient.POTION_COLOR)
             .properties(it -> it.durability(Services.CONFIG.common().getBongHits()))
             .properties(it -> it.craftRemainder(Items.GLASS_BOTTLE))
+            .tag(NirvanaTags.SMOKING_ITEM)
             .model((c, p) -> p.generated(c, p.modLoc("item/bong_potion"), p.modLoc("item/bong_potion_overlay")))
             .register();
+
     public static final ItemEntry<JointItem> JOINT = REGISTRATE
             .item("joint", Services.PLATFORM::createJointItem)
             .properties(it -> it.durability(Services.CONFIG.common().getJointHits()))
             .tag(NirvanaTags.NAUSEATING)
+            .tag(NirvanaTags.SMOKING_ITEM)
             .tag(NirvanaTags.ATTACHED_TO_HEAD)
             .tab(CreativeModeTabs.FOOD_AND_DRINKS)
             .model(Services.DATAGEN::joint)
@@ -129,7 +133,7 @@ public class NirvanaItems {
             .item("herbal_salve", HerbalSalveItem::new)
             .properties(it -> it.stacksTo(1))
             .properties(it -> it.craftRemainder(Items.BOWL))
-            .tab(CreativeModeTabs.FOOD_AND_DRINKS, NirvanaItems.addSalveStacks())
+            .transform(it -> it.tab(CreativeModeTabs.FOOD_AND_DRINKS, NirvanaItems.addSuspiciousStack(it)))
             .register();
 
     public static final ItemEntry<? extends RecordItem> DISC_JAM = REGISTRATE
@@ -142,6 +146,21 @@ public class NirvanaItems {
                 provider.add(context.get(), "Music Disc");
                 provider.add(context.get().getDescriptionId() + ".desc", "Jam - firch");
             })
+            .register();
+
+    public static final ItemEntry<? extends Item> EMPTY_PIPE = REGISTRATE
+            .item("old_pipe", Item::new)
+            .properties(it -> it.stacksTo(1))
+            .properties(it -> it.rarity(Rarity.RARE))
+            .tab(CreativeModeTabs.TOOLS_AND_UTILITIES)
+            .register();
+
+    public static final ItemEntry<? extends Item> FILLED_PIPE = REGISTRATE
+            .item("suspicious_pipe", SuspiciousPipeItem::new)
+            .properties(it -> it.stacksTo(1))
+            .properties(it -> it.rarity(Rarity.RARE))
+            .tag(NirvanaTags.SMOKING_ITEM)
+            .transform(it -> it.tab(CreativeModeTabs.TOOLS_AND_UTILITIES, NirvanaItems.addSuspiciousStack(it)))
             .register();
 
     public static void register() {

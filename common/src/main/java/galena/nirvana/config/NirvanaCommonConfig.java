@@ -37,4 +37,8 @@ public class NirvanaCommonConfig {
     public int herbalSalveDuration() {
         return 160 * 3;
     }
+
+    public int suspiciousPipeDuration() {
+        return 160 * 3;
+    }
 }

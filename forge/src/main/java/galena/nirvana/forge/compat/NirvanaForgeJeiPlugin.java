@@ -20,7 +20,7 @@ public class NirvanaForgeJeiPlugin implements IModPlugin {
             CreateCompat.addJeiRecipes(registration);
         }
 
-        registration.addRecipes(RecipeTypes.CRAFTING, NirvanaRecipeTypes.createSalveRecipes());
+        registration.addRecipes(RecipeTypes.CRAFTING, NirvanaRecipeTypes.createSuspiciousRecipes());
     }
 
     @Override
@@ -31,6 +31,8 @@ public class NirvanaForgeJeiPlugin implements IModPlugin {
     @Override
     public void registerItemSubtypes(ISubtypeRegistration registration) {
         registration.registerSubtypeInterpreter(NirvanaItems.POTION_BONG.get(), NirvanaJeiCompat::interpretPotion);
+        registration.registerSubtypeInterpreter(NirvanaItems.HERBAL_SALVE.get(), NirvanaJeiCompat::interpretSuspiciousItem);
+        registration.registerSubtypeInterpreter(NirvanaItems.FILLED_PIPE.get(), NirvanaJeiCompat::interpretSuspiciousItem);
     }
 
 }

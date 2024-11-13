@@ -20,4 +20,6 @@ public class NirvanaTags {
 
     public static final TagKey<Item> SHEARS = TagKey.create(Registries.ITEM, new ResourceLocation(NirvanaConstants.MOD_ID, "shears"));
 
+    public static final TagKey<Item> SMOKING_ITEM = TagKey.create(Registries.ITEM, new ResourceLocation(NirvanaConstants.MOD_ID, "smoking_item"));
+
 }
